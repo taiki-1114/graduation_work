@@ -77,3 +77,7 @@ Figma：https://www.figma.com/file/vIVIgc2HAITwTTq3KbfcbJ/%E5%8D%92%E6%A5%AD%E5%
 ### 未ログインでも閲覧または利用できるページ
 以下の項目は適切に未ログインでも閲覧または利用できる画面遷移になっているか？
 - [ ] 記事閲覧機能
+
+### ER図
+
+gyazo:https://gyazo.com/1c846c0ab251d0e8a443b73e4b9ea4fd
