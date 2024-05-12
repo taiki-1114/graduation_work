@@ -1,3 +1,28 @@
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
 ■サービス概要
 どんなサービスなのかを３行で説明してください。
 
@@ -81,4 +106,3 @@ MVPリリース時に作りたい機能
 追加サービスの案・追加機能の案
 大カテゴリ、中カテゴリ、小カテゴリを設定可能
 検索画面で大カテゴリ→中カテゴリ→小カテゴリと選択すると検索条件の絞り込みが可能となる
-
