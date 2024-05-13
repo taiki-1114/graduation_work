@@ -1,6 +1,8 @@
 FROM ruby:3.1.4
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
+ENV RAILS_ENV=production
+ENV RAILS_ENV=development
 RUN apt-get update -qq \
 && apt-get install -y ca-certificates curl gnupg \
 && mkdir -p /etc/apt/keyrings \
@@ -9,7 +11,7 @@ RUN apt-get update -qq \
 && wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
 && apt-get update -qq \
-&& apt-get install -y build-essential libpq-dev nodejs yarn
+&& apt-get install -y build-essential libpq-dev nodejs yarn default-mysql-client
 RUN mkdir /graduation_work
 WORKDIR /graduation_work
 RUN gem install bundler:2.3.17
@@ -19,3 +21,7 @@ COPY yarn.lock /graduation_work/yarn.lock
 RUN bundle install
 RUN yarn install
 COPY . /graduation_work
+
+COPY start.sh /start.sh
+RUN chmod 744 /start.sh
+CMD ["sh", "/start.sh"]

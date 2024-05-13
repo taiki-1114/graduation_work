@@ -1,14 +1,22 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Articles</h1>
-
+<h1>質問記事一覧</h1>
 <div id="articles">
+<div class="container mt-4">
+  <h2 class="mb-4">質問一覧</h2>
+  <table class="table table-striped table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th><strong>質問タイトル</strong></th>
+        <th><strong>質問内容</strong></th>
+        <th><strong>質問回答</strong></th>
+        <th>質問作成日</th>
+        <th>質問更新日</th>
+      </tr>
+    </thead>
   <% @articles.each do |article| %>
     <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
   <% end %>
+</table>
 </div>
-
-<%= link_to "New article", new_article_path %>
+</div>

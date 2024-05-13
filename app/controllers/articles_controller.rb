@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  skip_before_action :require_login
   before_action :set_article, only: %i[ show edit update destroy ]
 
   # GET /articles or /articles.json
@@ -8,6 +9,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1 or /articles/1.json
   def show
+    @article = Article.find(params[:id])
   end
 
   # GET /articles/new
@@ -17,44 +19,35 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1/edit
   def edit
+    @article = current_user.article.find(params[:id])
   end
 
   # POST /articles or /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = current_user.article.build(article_params)
 
-    respond_to do |format|
       if @article.save
-        format.html { redirect_to article_url(@article), notice: "Article was successfully created." }
-        format.json { render :show, status: :created, location: @article }
+        redirect_to article_url(@article), notice: "Article was successfully created." 
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        render :new, status: :unprocessable_entity
       end
-    end
   end
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
-    respond_to do |format|
+    @article = current_user.article.find(params[:id])
       if @article.update(article_params)
-        format.html { redirect_to article_url(@article), notice: "Article was successfully updated." }
-        format.json { render :show, status: :ok, location: @article }
+        redirect_to article_url(@article), notice: "Article was successfully updated."
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
+        render :edit, status: :unprocessable_entity
       end
-    end
   end
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article.destroy
-
-    respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @article = current_user.article.find(params[:id])
+    @article.destroy!
+      redirect_to articles_url, notice: "Article was successfully destroyed." 
   end
 
   private

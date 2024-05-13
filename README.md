@@ -1,28 +1,4 @@
 # README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
 ■サービス概要
 どんなサービスなのかを３行で説明してください。
 
@@ -50,9 +26,9 @@ Things you may want to cover:
 
 利用者は閲覧者とログインユーザーと管理者に別れる。
 
-閲覧者は石綿と廃棄物の処理方法の記事を検索して確認することができる
-ログインユーザーは、ログインをすることで、記事に評価をつけることができる。役に立った記事は役に立ったボタンを押し評価することができる。役に立ったが多い記事は信頼の指標にすることができる
-ログインユーザーは、記事投稿画面から質問を投稿することができる。管理者は投稿された質問について答えることができる。
+閲覧者は石綿と廃棄物の処理方法の記事を検索して確認することができる。閲覧者は記事に役に立ったボタンで評価をつけることができる。
+ログインユーザーは、ログインをすることで、お気に入り質問記事をブックマークし、リスト化することができる。
+また、記事投稿画面から質問を投稿することができる。管理者は投稿された質問について答えることができる。
 管理者は記事の質問と回答どちらも可能で、よくある質問をあらかじめ用意し、閲覧ユーザーを増やす
 
 ■ ユーザーの獲得について

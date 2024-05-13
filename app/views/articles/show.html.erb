@@ -1,10 +1,22 @@
 <p style="color: green"><%= notice %></p>
-
-<%= render @article %>
-
-<div>
-  <%= link_to "Edit this article", edit_article_path(@article) %> |
-  <%= link_to "Back to articles", articles_path %>
-
-  <%= button_to "Destroy this article", @article, method: :delete %>
+<div class="card">
+   <div class="card-header">
+    質問詳細
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">石綿産廃に関する質問詳細</h5>
+    <p class="card-text"><%= "質問タイトル:#{@article.title}" %></p>
+    <p class="card-text"><%= "質問内容:#{@article.question_body}" %></p>
+    <p class="card-text"><%= "質問回答:#{@article.question_answer}" %></p>
+  </div>
+  <img src="..." class="card-img-top" alt="...">
+<div class="card-footer">
+  <div class="row">
+  <% if logged_in? && current_user.own?(@article)%>
+  <%= link_to "編集", edit_article_path(@article),class: "btn btn-primary" %>
+  <%= button_to "削除", @article, method: :delete,class: "btn btn-primary" %>
+  <% end%>
+  <%= link_to "一覧に戻る", articles_path,class: "btn btn-primary"%>
+  </div>
+</div>
 </div>

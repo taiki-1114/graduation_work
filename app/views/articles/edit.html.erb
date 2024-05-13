@@ -1,10 +1,19 @@
-<h1>Editing article</h1>
-
+<h1>質問編集</h1>
+<div class="card">
+   <div class="card-header">
+    質問詳細
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">石綿産廃に関する質問詳細</h5>
 <%= render "form", article: @article %>
-
+  </div>
+  
 <br>
 
-<div>
-  <%= link_to "Show this article", @article %> |
-  <%= link_to "Back to articles", articles_path %>
+<div class="card-footer">
+  <% if current_user.own?(@article) %>
+  <%= link_to "詳細画面へ", @article, class: "btn btn-primary" %>
+  <% end%>
+  <%= link_to "一覧画面へ", articles_path, class: "btn btn-primary" %>
+</div>
 </div>
