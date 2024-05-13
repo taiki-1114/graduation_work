@@ -1,5 +1,5 @@
-class ArticlesController < ApplicationController
-  skip_before_action :require_login
+class Admin::ArticlesController < Admin::BaseController
+  before_action :set_article, only: %i[ show edit update destroy ]
 
   # GET /articles or /articles.json
   def index
@@ -7,9 +7,7 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1 or /articles/1.json
-  def show
-    @article = Article.find(params[:id])
-  end
+  def show;end
 
   # GET /articles/new
   def new
@@ -17,16 +15,14 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1/edit
-  def edit
-    @article = current_user.articles.find(params[:id])
-  end
+  def edit;end
 
   # POST /articles or /articles.json
   def create
-    @article = current_user.articles.build(article_params)
+    @article = Article.build(article_params)
 
       if @article.save
-        redirect_to article_url(@article), notice: "Article was successfully created." 
+        redirect_to admin_articles_path, notice: "Article was successfully created." 
       else
         render :new, status: :unprocessable_entity
       end
@@ -34,17 +30,17 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
-    @article = current_user.articles.find(params[:id])
       if @article.update(article_params)
-        redirect_to article_url(@article), notice: "Article was successfully updated."
+        redirect_to admin_article_path(@article), notice: "Article was successfully updated."
       else
+        flash.now[:danger] = '更新に失敗しました'
         render :edit, status: :unprocessable_entity
       end
   end
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article = current_user.articles.find(params[:id])
+    @article = Article.find(params[:id])
     @article.destroy!
       redirect_to articles_url, notice: "Article was successfully destroyed." 
   end
@@ -57,6 +53,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :question_body)
+      params.require(:article).permit(:title, :question_body, :question_answer)
     end
 end

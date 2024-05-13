@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_12_111540) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_13_062909) do
   create_table "articles", charset: "utf8mb4", force: :cascade do |t|
     t.string "title"
     t.text "question_body"
@@ -28,6 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_12_111540) do
     t.string "salt"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

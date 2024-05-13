@@ -9,14 +9,11 @@
     <p class="card-text"><%= "質問内容:#{@article.question_body}" %></p>
     <p class="card-text"><%= "質問回答:#{@article.question_answer}" %></p>
   </div>
-  <img src="..." class="card-img-top" alt="...">
 <div class="card-footer">
   <div class="row ms-auto">
-  <% if logged_in? && current_user.own?(@article) || current_user.admin?%>
-  <%= link_to "編集", edit_article_path(@article),class: "btn btn-primary" %>
+  <%= link_to "編集", edit_admin_article_path(@article),class: "btn btn-primary" %>
   <%= button_to "削除", @article, method: :delete,class: "btn btn-primary" %>
-  <% end%>
-  <%= link_to "一覧に戻る", articles_path,class: "btn btn-primary"%>
+  <%= link_to "一覧に戻る", admin_articles_path,class: "btn btn-primary"%>
   </div>
 </div>
 </div>
