@@ -1,22 +1,21 @@
 <p style="color: green"><%= notice %></p>
 <div class="card">
-   <div class="card-header">
-    質問詳細
+  <div class="card-header">
+  質問詳細
   </div>
-  <div class="card-body">
-    <h5 class="card-title">石綿産廃に関する質問詳細</h5>
-    <p class="card-text"><%= "質問タイトル:#{@article.title}" %></p>
-    <p class="card-text"><%= "質問内容:#{@article.question_body}" %></p>
-    <p class="card-text"><%= "質問回答:#{@article.question_answer}" %></p>
-  </div>
-  <img src="..." class="card-img-top" alt="...">
-<div class="card-footer">
-  <div class="row ms-auto">
-  <% if logged_in? && current_user.own?(@article) || current_user.admin?%>
-  <%= link_to "編集", edit_article_path(@article),class: "btn btn-primary" %>
-  <%= button_to "削除", @article, method: :delete,class: "btn btn-primary" %>
-  <% end%>
-  <%= link_to "一覧に戻る", articles_path,class: "btn btn-primary"%>
-  </div>
-</div>
+    <div class="card-body">
+      <h5 class="card-title">石綿産廃に関する質問詳細</h5>
+      <p class="card-text"><%= "質問タイトル:#{@article.title}" %></p>
+      <p class="card-text"><%= "質問内容:#{@article.question_body}" %></p>
+      <p class="card-text"><%= "質問回答:#{@article.question_answer}" %></p>
+    </div>
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-footer">
+      <% if logged_in? && current_user.own?(@article) || current_user.admin?%>
+      <%= link_to "編集", edit_article_path(@article),class: "btn btn-primary" %>
+      <%= link_to "削除", @article, data: { turbo_method: :delete, turbo_confirm: "削除しますか？" },class: "btn btn-primary" %>
+      <% end%>
+      <%= link_to "一覧に戻る", articles_path,class: "btn btn-primary"%>
+      </div>
+    </div>
 </div>

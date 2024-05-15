@@ -10,10 +10,9 @@
     <p class="card-text"><%= "質問回答:#{@article.question_answer}" %></p>
   </div>
 <div class="card-footer">
-  <div class="row ms-auto">
-  <%= link_to "編集", edit_admin_article_path(@article),class: "btn btn-primary" %>
-  <%= button_to "削除", @article, method: :delete,class: "btn btn-primary" %>
-  <%= link_to "一覧に戻る", admin_articles_path,class: "btn btn-primary"%>
+    <%= link_to "編集", edit_admin_article_path(@article),class: "btn btn-primary" %>
+    <%= link_to "削除", admin_article_path(@article),data: { turbo_method: :delete, turbo_confirm: "削除しますか？" },class: "btn btn-primary" %>
+    <%= link_to "一覧に戻る", admin_articles_path,class: "btn btn-primary"%>
   </div>
 </div>
 </div>

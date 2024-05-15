@@ -1,27 +1,23 @@
 class ArticlesController < ApplicationController
   skip_before_action :require_login
 
-  # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @q = Article.ransack(params[:q])
+    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(20)
   end
 
-  # GET /articles/1 or /articles/1.json
   def show
     @article = Article.find(params[:id])
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
 
-  # GET /articles/1/edit
   def edit
     @article = current_user.articles.find(params[:id])
   end
 
-  # POST /articles or /articles.json
   def create
     @article = current_user.articles.build(article_params)
 
@@ -32,7 +28,6 @@ class ArticlesController < ApplicationController
       end
   end
 
-  # PATCH/PUT /articles/1 or /articles/1.json
   def update
     @article = current_user.articles.find(params[:id])
       if @article.update(article_params)
@@ -42,7 +37,6 @@ class ArticlesController < ApplicationController
       end
   end
 
-  # DELETE /articles/1 or /articles/1.json
   def destroy
     @article = current_user.articles.find(params[:id])
     @article.destroy!
@@ -50,13 +44,12 @@ class ArticlesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def article_params
-      params.require(:article).permit(:title, :question_body)
-    end
+  def set_article
+    @article = Article.find(params[:id])
+  end
+
+  def article_params
+    params.require(:article).permit(:title, :question_body)
+  end
 end

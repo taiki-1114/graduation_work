@@ -40,9 +40,8 @@ class Admin::ArticlesController < Admin::BaseController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy!
-      redirect_to articles_url, notice: "Article was successfully destroyed." 
+      redirect_to admin_articles_path, notice: "Article was successfully destroyed.",status: :see_other 
   end
 
   private
