@@ -1,0 +1,32 @@
+<%= form_with(model: article) do |f| %>
+  <% if article.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+      <ul>
+        <% article.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div>
+    <%= f.label :title,"質問タイトル", style: "display: block" %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :question_body,"質問内容", style: "display: block" %>
+    <%= f.text_area :question_body %>
+  </div>
+  <%if current_user.admin?%>
+  <div>
+    <%= f.label :question_answer,"質問回答", style: "display: block" %>
+    <%= f.text_area :question_answer %>
+  </div>
+  <%end%>
+
+  <div>
+    <%= f.submit "投稿する", class: "btn btn-primary" %>
+  </div>
+<% end %>
