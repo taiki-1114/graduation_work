@@ -10,10 +10,24 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
 
   has_many :articles, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_articles, through: :bookmarks, source: :article
 
   enum role: { general: 0, admin: 1 }
 
   def own?(object)
     id == object&.user_id
+  end
+
+  def bookmark(article)
+    bookmark_articles << article
+  end
+
+  def unbookmark(article)
+    bookmark_articles.destroy(article)
+  end
+
+  def bookmark?(article)
+    bookmark_articles.include?(article)
   end
 end

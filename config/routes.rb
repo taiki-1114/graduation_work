@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :articles
+  resources :articles do
+   collection do
+     get :bookmarks
+   end
+  end
+  resources :bookmarks, only: %i[create destroy]
   namespace :admin do
     root "articles#index"
     get 'login' => 'user_sessions#new', :as => :login

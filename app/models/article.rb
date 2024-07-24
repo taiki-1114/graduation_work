@@ -4,4 +4,6 @@ class Article < ApplicationRecord
   validates :question_answer, length: { maximum: 535 }
 
   belongs_to :user
+  has_many :bookmarks, dependent: :destroy
+  has_many :users, through: :bookmarks
 end

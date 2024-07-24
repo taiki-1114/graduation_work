@@ -43,6 +43,10 @@ class ArticlesController < ApplicationController
       redirect_to articles_url, notice: "Article was successfully destroyed." 
   end
 
+  def bookmarks
+    @bookmark_articles = current_user.bookmark_articles.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(20)
+  end
+
   private
 
   def set_article
