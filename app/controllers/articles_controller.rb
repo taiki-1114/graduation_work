@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @total_likes = @article.article_likes.count
   end
 
   def new
@@ -45,7 +46,8 @@ class ArticlesController < ApplicationController
   end
 
   def bookmarks
-    @bookmark_articles = current_user.bookmark_articles.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(20)
+    @q = current_user.bookmark_articles.ransack(params[:q])
+    @bookmark_articles = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def search

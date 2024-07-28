@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :articles,only: %i[index new create show edit update destroy] do
     collection do
       get :search
+      get :bookmarks
     end
   end
   resources :bookmarks, only: %i[create destroy]
