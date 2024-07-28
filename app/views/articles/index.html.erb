@@ -1,10 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
-<h2>このサイトについて</h2>
-<p>近年プラスチック、ごみ、地球温暖化など社会問題となっている環境問題ですが、その中でも2020年アスベストに関する新しいルールが制定されました。<br>
-何かと分かりづらい環境対策の知識、このサイトは主に石綿と廃棄物に焦点を当てて、すぐに実務に活かせるような情報をすぐに検索できるようになっています。</p>
 <div id="articles">
-  <div class="container mt-4">
+<div class="container mt-4">
+<p style="color: green"><%= notice %></p>
+  <h2>このサイトについて</h2>
+  <p class = my-3>近年プラスチック、ごみ、地球温暖化など社会問題となっている環境問題ですが、その中でも2020年アスベストに関する新しいルールが制定されました。<br>
+分かりづらい環境対策の知識、このサイトは主に石綿と廃棄物に焦点を当てて、すぐに実務に活かせるような情報をすぐに検索できるようになっています。</p>
+
     <h2 class="mb-4">質問記事一覧</h2>
     <%= render 'search_form', q: @q, url: articles_path %>
     <table class="table table-striped table-bordered">
@@ -21,5 +21,6 @@
         <%= render article %>
       <% end %>
     </table>
+  <%= paginate @articles, theme: 'bootstrap-5' %>
   </div>
 </div>

@@ -1,0 +1,7 @@
+<div class="ms-auto" id = "like-buttons">
+  <% if current_user.liked?(article) %>
+    <%= render 'unlike', { article: article} %>
+  <% else %>
+    <%= render 'like', { article: article} %>
+  <% end %>
+</div>

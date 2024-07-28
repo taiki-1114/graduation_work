@@ -62,6 +62,8 @@ gem 'kaminari', "1.2.2"
 gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 #ransackのインストール
 gem 'ransack', "3.2.1"
+#letter_opener_web', '2.0.0'のインストール
+gem 'letter_opener_web', '2.0.0'
 #configのインストール
 gem 'config'
 gem 'enum_help'
