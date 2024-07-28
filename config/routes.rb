@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :sessions, only: [:new, :create, :destroy]
-  resources :articles,only: %i[index new create show edit update destroy]
+  resources :articles,only: %i[index new create show edit update destroy] do
+    collection do
+      get :search
+    end
+  end
   resources :bookmarks, only: %i[create destroy]
   resources :article_likes, only: %i[create destroy]
   namespace :admin do

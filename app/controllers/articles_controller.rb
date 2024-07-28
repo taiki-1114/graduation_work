@@ -48,6 +48,14 @@ class ArticlesController < ApplicationController
     @bookmark_articles = current_user.bookmark_articles.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(20)
   end
 
+  def search
+    @articles = Article.where("title like ?", "%#{params[:q]}%")
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def set_article
