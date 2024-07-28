@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   def index
     @q = Article.ransack(params[:q])
-    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(20)
+    @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(5)
   end
 
   def show
@@ -22,6 +22,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(article_params)
 
       if @article.save
+        UserMailer.new_article_notification(@article).deliver_later
         redirect_to article_url(@article), notice: "Article was successfully created." 
       else
         render :new, status: :unprocessable_entity
@@ -54,6 +55,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :question_body)
+    params.require(:article).permit(:title, :question_body, :question_answer)
   end
 end

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <style>
+      /* 必要に応じてCSSを追加 */
+    </style>
+  </head>
+<body>
+  <h1>新しい記事が投稿されました</h1>
+  <p>記事タイトル: <%= @article.title %></p>
+  <p>投稿者: <%= @article.user.name %></p>
+  <p>内容:</p>
+  <p><%= @article.question_body %></p>
+  <p><a href="<%= article_url(@article) %>">記事を読む</a></p>
+</body>
+</html>
