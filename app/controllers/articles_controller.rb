@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
 
       if @article.save
         UserMailer.new_article_notification(@article).deliver_later
-        redirect_to article_url(@article), notice: "Article was successfully created." 
+        redirect_to article_url(@article), notice: "質問・回答を作成しました" 
       else
         render :new, status: :unprocessable_entity
       end
@@ -33,7 +33,7 @@ class ArticlesController < ApplicationController
   def update
     @article = current_user.articles.find(params[:id])
       if @article.update(article_params)
-        redirect_to article_url(@article), notice: "Article was successfully updated."
+        redirect_to article_url(@article), notice: "質問・回答を更新しました"
       else
         render :edit, status: :unprocessable_entity
       end
@@ -42,7 +42,7 @@ class ArticlesController < ApplicationController
   def destroy
     @article = current_user.articles.find(params[:id])
     @article.destroy!
-      redirect_to articles_url, notice: "Article was successfully destroyed." 
+      redirect_to articles_url, notice: "質問・回答を削除しました" 
   end
 
   def bookmarks

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_pages/terms_of_service'
   resources :users, only: %i[new create]
   resources :sessions, only: [:new, :create, :destroy]
   resources :articles,only: %i[index new create show edit update destroy] do
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root 'articles#index'
+  get 'terms_of_service', to: 'static_pages#terms_of_service'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   
 end

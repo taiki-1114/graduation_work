@@ -66,16 +66,16 @@ Rails.application.configure do
 
   #本番環境でgmailを使用してテストするための設定
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_setting = {
+  config.action_mailer.smtp_settings = {
     address:'smtp.gmail.com',
     port: 587,
-    domain: helpecofaq-9c2e0361eea4.herokuapp.com,
+    domain: 'helpecofaq-9c2e0361eea4.herokuapp.com',
     user_name: ENV['GMAIL_USERNAME'],
     password: ENV['GMAIL_PASSWORD'],
     authentication: 'plain',
     enable_starttls_auto: true
   }
-
+  config.action_mailer.default_options = { from: 'no-reply@example.com' }
   config.action_mailer.default_url_options = { host: 'helpecofaq-9c2e0361eea4.herokuapp.com'}
 
   # Ignore bad email addresses and do not raise email delivery errors.
