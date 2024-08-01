@@ -1,8 +1,8 @@
 FROM ruby:3.1.4
 ENV LANG C.UTF-8
 ENV TZ Asia/Tokyo
+ENV RAILS_ENV=environment
 ENV RAILS_ENV=production
-ENV RAILS_ENV=development
 RUN apt-get update -qq \
 && apt-get install -y ca-certificates curl gnupg \
 && mkdir -p /etc/apt/keyrings \
