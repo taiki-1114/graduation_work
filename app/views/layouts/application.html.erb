@@ -15,12 +15,19 @@
   </head>
 
   <body>
-  <% if logged_in? %>
-    <%= render 'shared/header' %>
-  <% else %>
-    <%= render 'shared/before_login_header' %>
-  <% end%>
-  <%= yield %>
-    <%= render 'shared/footer' %>
+    <% if logged_in? %>
+      <%= render 'shared/header' %>
+    <% else %>
+      <%= render 'shared/before_login_header' %>
+    <% end%>
+  <div class = 'row d-flex' style='min-height: 100vh;'>
+    <div class='col-2' style='min-height: 100vh;'>
+      <%= render 'shared/sidebar' %>
+    </div>
+    <div class='col-10'>
+      <%= yield %>
+    </div>
+   </div>
+  <%= render 'shared/footer' %>
   </body>
 </html>
