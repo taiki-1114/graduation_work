@@ -7,10 +7,8 @@
         質問詳細
         </div>
         <%= render 'bookmark_buttons', { article: @article } %>
-        ブックマーク
         <%= render 'like_buttons', { article: @article } %>
-      評価する
-      <%= @total_likes%>
+      <%=" いいね合計数　#{@total_likes}"%>
       </div>
       <div class="card-body col-12">
         <h5 class="card-title">石綿産廃に関する質問詳細</h5>
