@@ -1,28 +1,19 @@
 <div id="articles">
 <div class="container mt-4">
 <p style="color: green"><%= notice %></p>
-  <h2>このサイトについて</h2>
-  <p class = my-3>近年プラスチック、ごみ、地球温暖化など社会問題となっている環境問題ですが、その中でも2020年アスベストに関する新しいルールが制定されました。<br>
-分かりづらい環境対策の知識、このサイトは主に石綿と廃棄物に焦点を当てて、すぐに実務に活かせるような情報をすぐに検索できるようになっています。</p>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >切り替えボタん</button>
-<div class="modal fade" id="exampleModal" role="dialog" aria-hidden="true" aria-labelledby="exampleModalLabel" tabindex="-1">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<h5 class="modal-title" id="exampleModalLabel"></h5>
-<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
-</div>
-</div>
-</div>
+  <h2>サービスの使い方</h2>
+  <p class = my-3>
+  近年プラスチック、廃棄物、地球温暖化など社会問題となっている環境問題ですが、その中でも2020年アスベストに関する新しい法律が制定されました。<br>
+このサイトでは、プラスチックや廃棄物、アスベストに関する環境法令の質問を投稿いただくことで、<br>
+管理者から回答を受け取ることができる<span style="color: red;">無料のFAQサービスとなっています。</span><br>
+回答した質問はお気に入りとして保存することも可能なので、実務に活かせるような情報をすぐにキャッチアップできるようになっています。</p>
     <h2 class="mb-4">質問記事一覧</h2>
     <%= render 'search_form', q: @q, url: articles_path %>
     <table class="table table-striped table-bordered">
       <thead class="thead-dark">
         <tr>
+          <th></th>
           <th>質問タイトル</th>
-          <th>質問内容</th>
-          <th>質問回答</th>
           <th>質問作成日</th>
           <th>質問更新日</th>
         </tr>

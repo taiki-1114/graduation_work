@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_action :require_login
-
+  #投稿の作成、一覧、編集、更新、削除、ブックマーク一覧、検索を制御するコントローラー
   def index
     @q = Article.ransack(params[:q])
     @articles = @q.result(distinct: true).includes(:user).order(created_at: :desc).page(params[:page]).per(5)

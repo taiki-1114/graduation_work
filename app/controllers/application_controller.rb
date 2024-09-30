@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  #アプリケーション全体を制御するコントローラー
     before_action :require_login
 
     private

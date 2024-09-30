@@ -1,4 +1,5 @@
 class UserSessionsController < ApplicationController
+  #ユーザー認証を制御するコントローラー
   skip_before_action :require_login, only: %i[new create]
 
   def new; end
