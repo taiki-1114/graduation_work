@@ -16,20 +16,21 @@
   <body>
     <% if logged_in? %>
       <%= render 'shared/header' %>
+      <div class="row">
+        <div class="col-3 sidebar">
+          <%= render 'shared/sidebar' %>
+        </div>
+  
+          <div class="col-xl-9 col-lg-12 content">
+            <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
+              <%= yield %>
+            </div>
+          </div>
+      </div>
     <% else %>
       <%= render 'shared/before_login_header' %>
-    <% end%>
-<div class="row">
-  <div class="col-3 d-none d-xl-block sidebar">
-      <%= render 'shared/sidebar' %>
-  </div>
-  
-<div class="col-xl-9 col-md-12 content">
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example3" data-bs-smooth-scroll="true" class="scrollspy-example-2" tabindex="0">
       <%= yield %>
-      </div>
-  </div>
-</div>
+    <% end%>
 <div class="col-12">
   <%= render 'shared/footer' %>
 </div>
