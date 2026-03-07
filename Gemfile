@@ -67,11 +67,17 @@ gem 'letter_opener_web', '2.0.0'
 #configのインストール
 gem 'config'
 gem 'enum_help'
+#メソッドがどのクラスに定義されているかを調べるgem
+gem 'method_source'
+#googleauthのインストール
+gem 'googleauth'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   #gem "sqlite3", "~> 1.4"
+  #rspecの導入
+  gem 'rspec-rails'
 end
 
 group :development do

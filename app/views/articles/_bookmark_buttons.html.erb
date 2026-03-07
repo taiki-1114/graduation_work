@@ -1,7 +1,10 @@
 <div class='ms-auto'>
+<% if current_user.present? %>
   <% if current_user.bookmark?(article)%>
     <%= render 'unbookmark', { article: article } %>
   <% else %>
     <%= render 'bookmark', { article: article} %>
   <% end %>
+  ブックマーク
+<% end %>
 </div>
